@@ -1,6 +1,6 @@
 import React,{useState}from 'react'
 import Firebase from '../../firebase'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import { FaChevronLeft } from 'react-icons/fa'
 import { Container } from './styled'
@@ -12,18 +12,34 @@ export default function LoginScreen(){
     const [email,setEmail] = useState()
     const [password,setPassword] = useState()
     const [recuperar, setRecuperar] = useState(false)
-    const [msg,setMsg] = useState()
+    const [msg,setMsg] = useState({})
+
+    const history = useHistory()
     
     const logar = (email,senha)=>{
         Firebase.login(email,senha)
-        .then(res=> setMsg("Login realizado com sucesso!"))
-        .catch(res=> setMsg(res.message))
+        .then(res=>{
+            setMsg({status:true,message:"Login realizado com sucesso!"})
+            setTimeout(()=>{
+                history.push('/')
+            },1000)
+
+        })
+        .catch(res=> {
+            setMsg({status:false,message:res.message})
+            
+        })
+    }
+
+    const resetMyPassword = (email)=>{
+        Firebase.resetPassword(email).then(res=>{
+            setRecuperar(false)
+        })
     }
     return(
-        <Container>
+        <Container status={msg.status}>
             <div className="cont">
                 <div className="login">
-                {msg}
                     <div className="cardLogin">
                         <Link to="/" className="back"><FaChevronLeft size={25}/> <span>Voltar</span></Link>
                         <div className="logo">
@@ -33,20 +49,22 @@ export default function LoginScreen(){
                         <div className="form">
                             { !recuperar ?
                                 <>
-                                    <input type="email" placeholder="email" value={email} onChange={(e)=> setEmail(e.target.value)}/>
-                                    <input type="password" placeholder="password" value={password} onChange={(e)=> setPassword(e.target.value)}/>
+                                    <input type="email" placeholder="email" value={email} onChange={(e)=> setEmail(e.target.value)} required/>
+                                    <input type="password" placeholder="password" value={password} onChange={(e)=> setPassword(e.target.value)} required/>
                                     <button onClick={()=> logar(email,password)}>Entrar</button>
                                 </>
 
                                 :
 
                                 <>
-                                    <input type="email" placeholder="email" value={email} onChange={(e)=> setEmail(e.target.value)}/>
-                                    <button onClick={()=>setRecuperar(true)}>{!recuperar ? "Entrar" : "Enviar"}</button>
+                                    <input type="email" placeholder="email" value={email} onChange={(e)=> setEmail(e.target.value)} required/>
+                                    <button onClick={()=>{resetMyPassword(email)}}>{!recuperar ? "Entrar" : "Enviar"}</button>
                                 </>
                             }
                         </div>
-
+                            <label>
+                                <input type="checkbox"/> Manter-se conectado.
+                            </label>
                         <div className="footer">
                             {!recuperar ? 
                             <>
@@ -59,6 +77,8 @@ export default function LoginScreen(){
                              <Link to="/register"> Registrar-se</Link>
                         </div>
                     </div>
+                <strong className="msg">{msg.message}</strong>
+
                 </div>
                 <div className="image">
                     <strong>De um lar a um amiguinho.</strong>

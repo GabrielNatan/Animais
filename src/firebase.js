@@ -17,8 +17,17 @@ let firebaseConfig = {
 
     }      
 
-    login(email,password){
-        return app.auth().signInWithEmailAndPassword(email, password)
+    login(email,password,manter = false){
+
+        if(manter){
+            return app.auth().setPersistence(app.auth.Auth.Persistence.LOCAL).then(res=>{
+                return app.auth().signInWithEmailAndPassword(email, password)
+            })
+        }else{
+            return app.auth().setPersistence(app.auth.Auth.Persistence.SESSION).then(res=>{
+                return app.auth().signInWithEmailAndPassword(email, password)
+            })
+        }
 
     }
 
@@ -35,6 +44,26 @@ let firebaseConfig = {
     isInitialized(){
         return new Promise(resolve =>{
             app.auth().onAuthStateChanged(resolve)
+        })
+    }
+
+    async resetPassword(email){
+        await app.auth().sendPasswordResetEmail(email)
+        .then(res=>{
+            alert("Email enviado para seu email")
+        })
+        .catch(error=>{
+            console.log(error)
+        })
+    }
+
+    async userLogged(){
+        await app.auth().onAuthStateChanged(user=>{
+            if(user){
+                console.log(user)
+            }else{
+                console.log("nenhum usuario logado")
+            }
         })
     }
 

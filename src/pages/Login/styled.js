@@ -84,6 +84,10 @@ overflow:hidden;
                     }
                 }
 
+                label{
+                    margin-top:5px;
+                }
+
                 .footer{
                     display:flex;
                     justify-content:space-between;
@@ -158,6 +162,14 @@ overflow:hidden;
                             font-size:1rem;
                         }
                     }
+                }
+
+                .msg{
+                    width:360px;
+                    text-align:center;
+                    position:absolute;
+                    bottom:125px;
+                    color: ${props=>props.status ? "#187459" : "#9F0808"};
                 }
             }
             
