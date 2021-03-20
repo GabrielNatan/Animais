@@ -1,7 +1,6 @@
 import styled  from 'styled-components'
 
 import { colorPrimary,rosa, azulEscuro,roxo,amarelo,showRight,showLeft,showDown,showUp  } from '../../global'
-//background: #187459;
 
 
 

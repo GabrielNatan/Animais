@@ -70,6 +70,10 @@ const GlobalStyle = createGlobalStyle`
     border:0;
     box-sizing: border-box;
   }
+
+  body{
+    background: ${colorPrimary};
+  }
 `
 
 export default GlobalStyle
