@@ -24,7 +24,7 @@ export default function HomeScreen(){
 
    
 
-    setIn()
+    
     return(
         <Container>
                 
