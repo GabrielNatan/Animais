@@ -1,6 +1,6 @@
 import app from 'firebase/app'
 import  'firebase/auth'
-import 'firebase/database'
+import 'firebase/firestore'
 let firebaseConfig = {
     apiKey: "AIzaSyDlGD_r1FEJIBfoEHF0acBlPVt23NyeKkU",
     authDomain: "dogneo-4465d.firebaseapp.com",
@@ -35,10 +35,16 @@ let firebaseConfig = {
         await app.auth().createUserWithEmailAndPassword(email,password)
         
         const uid = app.auth().currentUser.uid;
+        console.log(uid)
+        let db = app.firestore();
 
-        return app.database().red('usuarios').child(uid).set({
-            name:name
-        })
+        db.collection("usuarios").add({
+            name: name
+        }).then(doc=>{
+            return true
+        }).catch(err=> {
+            return false
+        } )
     }
 
     isInitialized(){
