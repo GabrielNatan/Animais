@@ -73,6 +73,7 @@ const GlobalStyle = createGlobalStyle`
 
   body{
     background: ${colorPrimary};
+    
   }
 `
 

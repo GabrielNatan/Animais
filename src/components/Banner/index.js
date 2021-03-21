@@ -8,7 +8,7 @@ export default function Banner(){
 
     return(
         <Container >
-          
+
         </Container>
     )
 }

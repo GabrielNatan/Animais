@@ -5,6 +5,8 @@ import { useDispatch,useSelector } from 'react-redux'
 
 import Navbar from '../../components/Navbar'
 import Banner from '../../components/Banner'
+import Menu from '../../components/menuLateral'
+
 
 export default function HomeScreen(){
     const [seconds,setSeconds] = useState(0)
@@ -29,6 +31,7 @@ export default function HomeScreen(){
     
     return(
         <Container>
+            <Menu/>
             <Navbar/>   
             <div className="cont">
                 <Banner/>
