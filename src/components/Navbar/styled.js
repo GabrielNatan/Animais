@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { showLeft, showRight } from '../../global'
 
 export const Container = styled.div`
     width:100%;
@@ -19,6 +20,7 @@ export const Container = styled.div`
             align-items:center;
             font-weight:bold;
             font-size:1.2rem;
+            animation:${showRight} 300ms linear forwards;
             img{
                 width:45px;
             }
@@ -29,6 +31,7 @@ export const Container = styled.div`
             display:flex;
             align-items:center;
             justify-content:flex-end;
+            animation:${showLeft} 300ms linear forwards;
 
             a{
                 display:none;
