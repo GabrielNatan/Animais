@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { showLeft, showRight } from '../../global'
+import { colorPrimary, showLeft, showRight } from '../../global'
 
 export const Container = styled.div`
     width:100%;
@@ -36,6 +36,10 @@ export const Container = styled.div`
             a{
                 display:none;
             }
+
+            ul{
+                display: none;
+            }
             
         }
     }
@@ -63,9 +67,95 @@ export const Container = styled.div`
                         color:#FFF;
                     }
                 }
+
+                ul{
+                    display:flex;
+                    width:100%;
+                    height:100%;
+                    align-items:center;
+                    .perfil_image{
+    
+                        width:44px;
+                        height:44px;
+                        border-radius:50%;
+                        margin-right:10px;
+                        position:relative;
+                        background: #E1E1E1;
+                        :before{
+                            content:"";
+                            display:inline-block;
+                            background: ${colorPrimary};
+                            width:51px;
+                            height:51px;
+                            border-radius:50%;
+                            position:absolute;
+                            left:-3px;
+                            top:-3px;
+                            z-index:-3;
+    
+                        }
+                        img{
+                            width:100%;
+                            border-radius:50%;
+                            object-fit:cover;
+                        }
+                    }
+    
+                    strong{
+                        font-size:1.1rem;
+                    }
+                }
                 
                 .bars{
                     display:none;
+                }
+            }
+        }
+    }
+
+
+    @media(min-width:1100px){
+
+        .contNav{
+
+            nav{
+                ul{
+                    width:100%;
+                    height:100%;
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    .perfil_image{
+        
+                        width:50px;
+                        height:50px;
+                        border-radius:50%;
+                        margin-right:10px;
+                        position:relative;
+                        background: #E1E1E1;
+                        :before{
+                            content:"";
+                            display:inline-block;
+                            background: ${colorPrimary};
+                            width:56px;
+                            height:56px;
+                            border-radius:50%;
+                            position:absolute;
+                            left:-3px;
+                            top:-3px;
+                            z-index:-3;
+        
+                        }
+                        img{
+                            width:100%;
+                            border-radius:50%;
+                            object-fit:cover;
+                        }
+                    }
+        
+                    strong{
+                        font-size:1.3rem;
+                    }
                 }
             }
         }

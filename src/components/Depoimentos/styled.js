@@ -5,7 +5,7 @@ import { colorPrimary, azulEscuro, roxo, amarelo, rosa } from '../../global'
 export const Container = styled.section`
 
         width:100%;
-        background: ${`#F7FEFE`};
+        background: ${colorPrimary};
         .contSobre{
             width:100%;
             max-width:1440px;
@@ -47,7 +47,7 @@ export const Container = styled.section`
                 align-items:center;
         
                 img{
-                    width:100%;
+                    width:80%;
                     object-fit:cover;
                 }
             }

@@ -73,6 +73,16 @@ let firebaseConfig = {
         })
     }
 
+    async infoUser(id){
+        
+        const uid = id
+        let db = app.firestore();
+
+        let esse = await db.collection("usuarios").doc(uid).get()
+       return esse.data()
+        
+    }
+
 }
 
 export default new Firebase()

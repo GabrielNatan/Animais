@@ -21,7 +21,7 @@ export default function LoginScreen(){
         .then(res=>{
             setMsg({status:true,message:"Login realizado com sucesso!"})
             setTimeout(()=>{
-                history.push('/')
+                history.push('/painel')
             },1000)
 
         })
@@ -44,7 +44,7 @@ export default function LoginScreen(){
                         <Link to="/" className="back"><FaChevronLeft size={25}/> <span>Voltar</span></Link>
                         <div className="logo">
                             <img src={Logo} alt="logo"/>
-                            <strong>Dogneo</strong>
+                            <strong>Doguíneo</strong>
                         </div>
                         <div className="form">
                             { !recuperar ?

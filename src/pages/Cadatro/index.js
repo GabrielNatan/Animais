@@ -42,7 +42,7 @@ export default function LoginScreen(){
                         <Link to="/" className="back"><FaChevronLeft size={25}/> <span>Voltar</span></Link>
                         <div className="logo">
                             <img src={Logo} alt="logo"/>
-                            <strong>Dogneo</strong>
+                            <strong>Doguíneo</strong>
                         </div>
                         <div className="form">                
                             <input type="text" placeholder="name" value={filds.name} onChange={(e)=> setFilds({...filds,name:e.target.value})} />
